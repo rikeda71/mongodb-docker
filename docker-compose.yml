@@ -8,6 +8,6 @@ services:
             - MONGO_INITDB_ROOT_PASSWORD=pass
         volumes:
             - ./data/db:/data/db
-            - ./data/tmp:/tmp
+            - ./data/tmp:/home
             - ./MONGODUMP/articles:/data/articles
         restart: always
