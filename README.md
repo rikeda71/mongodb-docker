@@ -4,6 +4,7 @@ docker-compose による mongodb の環境設定
 
 ## Requirements
 
+- python3(helpの表示のみ)
 - docker
 
 ## Usage
