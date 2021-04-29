@@ -1,0 +1,6 @@
+data/db/*
+data/tmp/*
+data/tmp/*
+!data/db/.gitkeep
+!data/tmp/.gitkeep
+MONGODUMP
