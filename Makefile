@@ -1,10 +1,10 @@
 ## バックアップデータをDBに保存
 restore:
 	docker-compose exec mongodb bash -c "mongorestore -v --db mongo --username user --password pass --authenticationDatabase admin /data/articles/"
-## csv形式で出力(./tmp/export.csvに出力): `COLLECTION=collection名 make export_csv` のように実行
+## csv形式で出力(./data/tmp/export.csvに出力): `COLLECTION=collection名 make export_csv` のように実行
 export_csv:
-	docker-compose exec mongodb bash -c "keys=`mongo -u user -p pass  mongo --authenticationDatabase admin --eval "rs.secondaryOk();var keys = []; for(var key in db.${COLLECTION}.findOne()) { keys.push(key); }; keys;" --quiet` && mongoexport --db mongo --username user --password pass --authenticationDatabase admin --collection=${COLLECTION} --fields="$keys" --type=csv --out=/home/export.csv"
-## json形式で出力(./tmp/export.jsonに出力): `COLLECTION=collection名 make export_json` のように実行
+	docker-compose exec mongodb bash /home/bin/export_csv.sh ${COLLECTION}
+## json形式で出力(./data/tmp/export.jsonに出力): `COLLECTION=collection名 make export_json` のように実行
 export_json:
 	docker-compose exec mongodb bash -c "mongoexport --db mongo --username user --password pass --authenticationDatabase admin --collection=${COLLECTION} --type=json --out=/home/export.json"
 ## mongodbが立ち上がっている仮想マシンのシェルに接続

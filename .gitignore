@@ -3,4 +3,5 @@ data/tmp/*
 data/tmp/*
 !data/db/.gitkeep
 !data/tmp/.gitkeep
+!data/tmp/bin/
 MONGODUMP
